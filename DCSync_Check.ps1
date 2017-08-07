@@ -1,5 +1,5 @@
-#Thanks Microsoft! :)
-
+#Thanks Microsoft :)
+#https://gallery.technet.microsoft.com/scriptcenter/Get-DCSyncRights-0e2ebbfe#content
 
 
 function Get-DCSyncRights { 
@@ -8,6 +8,13 @@ function Get-DCSyncRights {
  
 This script returns a list of objects in Active Directory that have been granted the DS-Get-Replication-Changes and DS-Get-Replication-Changes-All ExtendedRights on the Domain-DNS, Configuration, and Schema (Schema) objects. 
 Objects returned in the output of this script have the privileges required to carry out the DCSync post exploitation technique found in tools like Mimikatz. 
+ 
+Function: Get-DCSyncRights 
+Author: Josh M. Bryant 
+Required Dependencies: Active Directory Module 
+Optional Dependencies: None 
+Version: 1.1 
+Last Updated: 4/29/2016 8:15 AM CST 
  
 .DESCRIPTION 
  
