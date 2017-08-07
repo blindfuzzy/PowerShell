@@ -1,0 +1,28 @@
+##Get Mail Enabled Admin Users
+
+Get-ADUser -Filter {(adminCount -eq 1) -and (mail -like "*")} -Properties adminCount,mail
+
+##Exchange 
+
+Get-ADUser -Filter {(adminCount -eq 1) -and (msExchWhenMailboxCreated -like "*")} -Properties adminCount,msExchWhenMailboxCreated
+
+##Sip 
+
+Get-ADUser -Filter {(adminCount -eq 1) -and (msRTCSIP-PrimaryUserAddress -like "*")} -Properties adminCount,msRTCSIP-PrimaryUserAddress
+
+We can use an Authentication Policy Silo to restrict the authentication scope of high privileged users, e.g. user A can only authenticate against server A and server B... if they try and logon somewhere else, they get a 'computer-says-no' message.
+
+ 
+
+How to use PowerShell to list Authentication Policy Members, i.e. the users, computers and service accounts in scope of the silo?
+
+(Get-ADAuthenticationPolicySilo -Identity "Tier_0_Auth_Pol_Silo").Members
+
+And
+
+(Get-ADAuthenticationPolicySilo -Identity "Tier_0_Auth_Pol_Silo").Members | ForEach-Object {
+
+    Get-ADObject -Identity $_ -Properties msDS-AssignedAuthNPolicySilo | Select Name,msDS-AssignedAuthNPolicySilo
+
+}
+
