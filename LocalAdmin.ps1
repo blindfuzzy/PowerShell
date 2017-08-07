@@ -1,3 +1,8 @@
+#Usage: 
+#Get-Content -Path .\computers.txt | Test-Online |
+#Get-LocalGroup -Export | Export-Csv -Path localadmins.csv -NoTypeInformation 
+
+
 Function global:Get-LocalGroup{ 
  
 #Requires -Version 2.0             
